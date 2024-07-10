@@ -137,11 +137,3 @@ for index, irate in enumerate(calculation_result):
     last = len(calculation_result[irate]) - 1
     print(round(irate*100, 2),"%", "--> ", calculation_result[irate][f'{last} Year'])
     
-
-
-
-
-
-
-
-
