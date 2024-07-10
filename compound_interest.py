@@ -135,7 +135,7 @@ calculation_result = compound_interest_calc(data_calculation, "") #Dict con resu
 print("\nResult by rate variance: ")
 for index, irate in enumerate(calculation_result):
     last = len(calculation_result[irate]) - 1
-    print(irate*100,"%", "--> ", calculation_result[irate][f'{last} Year'])
+    print(round(irate*100, 2),"%", "--> ", calculation_result[irate][f'{last} Year'])
     
 
 
