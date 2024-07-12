@@ -101,7 +101,7 @@ def compound_interest_calc(calculation_result, calc_type):
 
 
 
-def growth_plot(calculation_result):
+def growth_plotaaaaaa(calculation_result):
     # years = range(len(calculation_result))
     # for year in years:
     #      plt.plot(year, calculation_result[f'{year} Year'], marker='o', linestyle='-')
@@ -119,21 +119,58 @@ def growth_plot(calculation_result):
     
     return 0
 
-def variance_range_calc():
-    return 0
+
+def growth_plot(calculation_result_df, irate_columns):
+    calculation_result_df.columns = irate_columns
+    fig, ax = plt.subplots()
+    ax.plot(
+            ['Inicio', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            calculation_result_df[irate_columns],
+            marker='o',
+            )
+    ax.grid(True)
+    ax.set_title("Crecimiento de capital por interes compuesto", fontsize=20)
+    ax.set_xlabel("Years", fontsize=14)
+    ax.set_ylabel("USD", fontsize=14)
+    
+    
+
+
+    
+
 
 #=============== PROGRAMA INICIAL ===============
 
 #Puedo hacerlo en una función aparte y devolver un dict.
 #Puedo hacerlo en un while y terminar de calcular con un éxit por condición.
 
-data_calculation = init_calculator() #Inicia calculadora, falta el resultado.
+data_calculation = init_calculator() #Inicia calculadora, falta  el resultado.
 calculation_result = compound_interest_calc(data_calculation, "") #Dict con result.
 
+irate_columns = [f"{irate*100}%" for irate in calculation_result]
 
+
+calculation_result_df = pd.DataFrame(calculation_result)
+
+
+growth_plot(calculation_result_df, irate_columns)
+    
+
+
+      
 
 print("\nResult by rate variance: ")
 for index, irate in enumerate(calculation_result):
     last = len(calculation_result[irate]) - 1
     print(round(irate*100, 2),"%", "--> ", calculation_result[irate][f'{last} Year'])
     
+
+
+
+
+
+
+
+
+
+
